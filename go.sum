@@ -1,5 +1,5 @@
-github.com/Drelf2018/go-api-markup-language v0.0.0-20230709124104-b7a412a88e17 h1:XoVx0SfKMl0mJaZIrxjvFCqLTY/wzbMkRDNGZ37mtow=
-github.com/Drelf2018/go-api-markup-language v0.0.0-20230709124104-b7a412a88e17/go.mod h1:JyxM9/pplflixATG5lwb3NnLhhYac5uyxsDYmT9QxVM=
+github.com/Drelf2018/go-api-markup-language v0.2.0-alpha0 h1:YmEmx+8OeOGuxnVkjmcJSenWhjj8fBEJBev20ByvHns=
+github.com/Drelf2018/go-api-markup-language v0.2.0-alpha0/go.mod h1:JyxM9/pplflixATG5lwb3NnLhhYac5uyxsDYmT9QxVM=
 github.com/Drelf2020/utils v0.0.0-20230617054513-1c11ad3f45e9 h1:zniO9Ba/VSYz5Ki3pPchDSmXauY+rj1+Uyf9gj0B2Xg=
 github.com/Drelf2020/utils v0.0.0-20230617054513-1c11ad3f45e9/go.mod h1:kvfDpo8jArhg++N7fyE6ynH1VrhngX0HFfQrMBE1Gbs=
 github.com/antonfisher/nested-logrus-formatter v1.3.1 h1:NFJIr+pzwv5QLHTPyKz9UMEoHck02Q9L0FP13b/xSbQ=

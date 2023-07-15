@@ -81,13 +81,25 @@ var FUNC string
 //go:embed api.py
 var API string
 
-func ToPython(am aml.ApiManager, path string) (api, file string) {
-	include := FUNC[:strings.Index(FUNC, "# loop")]
-	include = strings.Replace(include, "path", path, 1)
-	function := utils.Slice(FUNC, "# loop", "# end", 0)
-	for name, api := range am.Output {
-		api.Function = name
-		include += ToPythonFunc(function, api)
-	}
-	return API, include
+func init() {
+	aml.Load(aml.Plugin{
+		Cmd:         "python",
+		Author:      "Drelf2018",
+		Version:     "2.0.0",
+		Description: "将 aml 文件转为可执行 python 代码",
+		Link:        "github.com/Drelf2018/aml2py",
+		Generate: func(p *aml.Parser) (files []aml.File) {
+			include := FUNC[:strings.Index(FUNC, "# loop")]
+			include = strings.Replace(include, "path", p.NewExt(".json"), 1)
+			function := utils.Slice(FUNC, "# loop", "# end", 0)
+			for name, api := range p.Output {
+				api.Function = name
+				include += ToPythonFunc(function, api)
+			}
+			return []aml.File{
+				{Name: "api.py", Content: API},
+				{Name: p.NewExt(".py"), Content: include},
+			}
+		},
+	})
 }
