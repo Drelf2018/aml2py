@@ -45,7 +45,7 @@ func SentenceToPython(sentence *aml.Sentence) (s string) {
 	return
 }
 
-func ToPythonFunc(format string, api *aml.Api) string {
+func ToPythonFunc(format, name string, api *aml.Api) string {
 	r, o, all := []string{}, []string{}, []string{}
 	hint := api.Hint
 	params := []string{}
@@ -68,7 +68,7 @@ func ToPythonFunc(format string, api *aml.Api) string {
 	}
 	args := append(r, o...)
 
-	format = strings.ReplaceAll(format, "demo", api.Function)
+	format = strings.ReplaceAll(format, "demo", name)
 	format = strings.ReplaceAll(format, "args", strings.Join(args, ", "))
 	format = strings.ReplaceAll(format, "hint", hint)
 	format = strings.ReplaceAll(format, "update(", "update("+strings.Join(all, ", "))
@@ -93,8 +93,7 @@ func init() {
 			include = strings.Replace(include, "path", p.NewExt(".json"), 1)
 			function := utils.Slice(FUNC, "# loop", "# end", 0)
 			for name, api := range p.Output {
-				api.Function = name
-				include += ToPythonFunc(function, api)
+				include += ToPythonFunc(function, name, api)
 			}
 			return []aml.File{
 				{Name: "api.py", Content: API},
