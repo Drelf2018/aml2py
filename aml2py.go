@@ -82,12 +82,12 @@ var FUNC string
 var API string
 
 func init() {
-	aml.Load(aml.Plugin{
+	aml.Plugin{
 		Cmd:         "python",
 		Author:      "Drelf2018",
-		Version:     "2.0.0",
+		Version:     "1.2.0",
 		Description: "将 aml 文件转为可执行 python 代码",
-		Link:        "github.com/Drelf2018/aml2py",
+		Link:        "https://github.com/Drelf2018/aml2py",
 		Generate: func(p *aml.Parser) (files []aml.File) {
 			include := FUNC[:strings.Index(FUNC, "# loop")]
 			include = strings.Replace(include, "path", p.NewExt(".json"), 1)
@@ -101,5 +101,5 @@ func init() {
 				{Name: p.NewExt(".py"), Content: include},
 			}
 		},
-	})
+	}.Load()
 }
